@@ -15,14 +15,31 @@ const busStops = [
   ];
   
   // TODO: add your own access token
-  mapboxgl.accessToken = '';
+  mapboxgl.accessToken = ''
+  const openWeatherKey = ''
+  const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
+
+  const temperature = document.getElementById('temperature')
+  const feelsLike = document.getElementById('feels-like')
+  const min = document.getElementById('min')
+  const max = document.getElementById('max')
+
+  const consultWeather = async (coordinates) => {
+    const fullURL = `${openWeatherURL}?lat=${coordinates[1]}&lon=${coordinates[0]}&appid=${openWeatherKey}&units=metric`;
+    fetch(fullURL).then(response => response.json()).then(data => {
+      temperature.textContent = data.main.temp;
+      feelsLike.textContent = data.main.feels_like;
+      min.textContent = data.main.temp_min;
+      max.textContent = data.main.temp_max;
+    });
+  }
   
   // This is the map instance
   let map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
     center: [-71.104081, 42.365554],
-    zoom: 14,
+    zoom: 12,
   });
   
   // TODO: add a marker to the map at the first coordinates in the array busStops. The marker variable should be named "marker"
@@ -37,11 +54,14 @@ const busStops = [
     setTimeout(() => {
       if (counter < busStops.length) {
         marker.setLngLat(busStops[counter]);
+        consultWeather(busStops[counter])
       }
       counter++;
       move();
-    }, 1000)
+    }, 2000)
   }
+
+  document.onload = consultWeather(busStops[counter]);
   
   // setInterval(move, 1000);
   

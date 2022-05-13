@@ -1,17 +1,44 @@
 body {
-    margin: 0;
-    padding: 0;
-  }
-  #map {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  .map-overlay {
-    position: absolute;
-    left: 0;
-    padding: 10px;
-  }
-  
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+.map-overlay {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+}
+button {
+  background: #422F90;
+  border: 2px solid;
+  border-color: #C599BC;
+  border-radius: 1rem;
+  box-shadow: none;
+  color: #F0F4EF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 1rem;
+  transition: background 100ms linear,
+              border-color 100ms linear;
+}
+button:hover {
+  background: #441D4B;
+  border-color: #7460AA;
+}
+#weather-info {
+  background: #BADEFC;
+  color: #000;
+  display: inline-block;
+  margin-left: 1rem;
+  padding: 1rem;
+}
+#main-container {
+  display: flex;
+}

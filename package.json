@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/SaulEnriqueMR/Real-Time-Bus-Tracker/issues"
   },
-  "homepage": "https://github.com/SaulEnriqueMR/Real-Time-Bus-Tracker#readme"
+  "homepage": "https://github.com/SaulEnriqueMR/Real-Time-Bus-Tracker#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
 }
