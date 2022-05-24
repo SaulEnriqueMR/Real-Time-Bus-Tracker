@@ -12,61 +12,60 @@ const busStops = [
     [-71.115476, 42.372085],
     [-71.117585, 42.373016],
     [-71.118625, 42.374863],
-  ];
-  
-  // TODO: add your own access token
-  mapboxgl.accessToken = ''
-  const openWeatherKey = ''
-  const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
+];
 
-  const temperature = document.getElementById('temperature')
-  const feelsLike = document.getElementById('feels-like')
-  const min = document.getElementById('min')
-  const max = document.getElementById('max')
+// TODO: add your own access token
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2F1bDg3OTc3NyIsImEiOiJjbDJ3NDc3c3YwNW1nM2pxdThsejJ0dDc3In0.GLUT3-KZk4je8UjOAetMrA'
+const openWeatherKey = 'f81f81446f53b05528a1a664bf5d826f'
+const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
 
-  const consultWeather = async (coordinates) => {
-    const fullURL = `${openWeatherURL}?lat=${coordinates[1]}&lon=${coordinates[0]}&appid=${openWeatherKey}&units=metric`;
-    fetch(fullURL).then(response => response.json()).then(data => {
-      temperature.textContent = data.main.temp;
-      feelsLike.textContent = data.main.feels_like;
-      min.textContent = data.main.temp_min;
-      max.textContent = data.main.temp_max;
-    });
-  }
-  
-  // This is the map instance
-  let map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-71.104081, 42.365554],
-    zoom: 12,
+const temperature = document.getElementById('temperature')
+const feelsLike = document.getElementById('feels-like')
+const min = document.getElementById('min')
+const max = document.getElementById('max')
+
+const consultWeather = async (coordinates) => {
+  const fullURL = `${openWeatherURL}?lat=${coordinates[1]}&lon=${coordinates[0]}&appid=${openWeatherKey}&units=metric`;
+  fetch(fullURL).then(response => response.json()).then(data => {
+    temperature.textContent = data.main.temp;
+    feelsLike.textContent = data.main.feels_like;
+    min.textContent = data.main.temp_min;
+    max.textContent = data.main.temp_max;
   });
+}
   
-  // TODO: add a marker to the map at the first coordinates in the array busStops. The marker variable should be named "marker"
-  const marker = new mapboxgl.Marker().setLngLat(busStops[0]).addTo(map)
+// This is the map instance
+let map = new mapboxgl.Map({
+  container: 'map',
+  style: 'mapbox://styles/mapbox/streets-v11',
+  center: [-71.104081, 42.365554],
+  zoom: 12,
+});
   
-  // counter here represents the index of the current bus stop
-  let counter = 0;
-  function move() {
-    // TODO: move the marker on the map every 1000ms. Use the function marker.setLngLat() to update the marker coordinates
-    // Use counter to access bus stops in the array busStops
-    // Make sure you call move() after you increment the counter.
-    setTimeout(() => {
-      if (counter < busStops.length) {
-        marker.setLngLat(busStops[counter]);
-        consultWeather(busStops[counter])
-      }
-      counter++;
-      move();
-    }, 2000)
-  }
+// TODO: add a marker to the map at the first coordinates in the array busStops. The marker variable should be named "marker"
+const marker = new mapboxgl.Marker().setLngLat(busStops[0]).addTo(map)
 
-  document.onload = consultWeather(busStops[counter]);
-  
-  // setInterval(move, 1000);
-  
-  // Do not edit code past this point
-  if (typeof module !== 'undefined') {
-    module.exports = { move };
-  }
-  
+// counter here represents the index of the current bus stop
+let counter = 0;
+function move() {
+  // TODO: move the marker on the map every 1000ms. Use the function marker.setLngLat() to update the marker coordinates
+  // Use counter to access bus stops in the array busStops
+  // Make sure you call move() after you increment the counter.
+  setTimeout(() => {
+    if (counter < busStops.length) {
+      marker.setLngLat(busStops[counter]);
+      consultWeather(busStops[counter])
+    }
+    counter++;
+    move();
+  }, 1500)
+}
+
+document.onload = consultWeather(busStops[counter]);
+
+// setInterval(move, 1000);
+
+// Do not edit code past this point
+if (typeof module !== 'undefined') {
+  module.exports = { move };
+}
