@@ -4,10 +4,9 @@
 - **Description of the project:**
     Uses mapbox to show bus stops from the MIT to Harvard. My improvements for this project where:
       1. Style the button
-      2. Separate my API_KEY from the public part of the project
-      3. Adjust initial Zoom
-      4. Increased the interval time
-      5. Implemented a call to Open Weather API
+      2. Adjust initial Zoom
+      3. Increased the interval time
+      4. Implemented a call to Open Weather API
 - **How to Run:** 
     Open the project, set your API_KEY for Mapbox and OpenWeather and open in the browser.
 - **Roadmap of future improvements:**
