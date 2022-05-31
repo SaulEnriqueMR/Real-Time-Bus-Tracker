@@ -15,8 +15,8 @@ const busStops = [
 ];
 
 // TODO: add your own access token
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2F1bDg3OTc3NyIsImEiOiJjbDJ3NDc3c3YwNW1nM2pxdThsejJ0dDc3In0.GLUT3-KZk4je8UjOAetMrA'
-const openWeatherKey = 'f81f81446f53b05528a1a664bf5d826f'
+mapboxgl.accessToken = ''
+const openWeatherKey = ''
 const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 const temperature = document.getElementById('temperature')
