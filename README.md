@@ -8,7 +8,7 @@
       3. Increased the interval time
       4. Implemented a call to Open Weather API
 - **How to Run:** 
-    Open the project, set your API_KEY for Mapbox and OpenWeather and open in the browser.
+    Open the project, set your API_KEY for Mapbox and OpenWeather in the "mapanimation.js" file and open in the browser.
 - **Roadmap of future improvements:**
     1. Implement dotenv for API_KEY recovery.
     2. Add Webpack.
